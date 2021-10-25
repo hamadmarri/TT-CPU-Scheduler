@@ -6,11 +6,11 @@ This is a testing version of TT cpu scheduler
 The goal of the Task Type (TT) scheduler is to detect
 tasks types based on their behaviours and control the schedulling
 based on their types. There are 5 types:
-1- REALTIME
-2- INTERACTIVE
-3- NO_TYPE
-4- CPU_BOUND
-5- BATCH
+1. REALTIME
+2. INTERACTIVE
+3. NO_TYPE
+4. CPU_BOUND
+5. BATCH
 
 Find the descriptions and the detection rules in `tasks.ods`
 
@@ -103,4 +103,5 @@ REALTIME {, anymore}.
 
 
 Thank you
+
 Hamad
