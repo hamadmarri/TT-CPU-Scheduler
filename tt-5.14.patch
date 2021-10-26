@@ -133,18 +133,9 @@ index 38ef6d06888e..0897412321fa 100644
  
  config SCHED_HRTICK
 diff --git a/kernel/Kconfig.preempt b/kernel/Kconfig.preempt
-index 5876e30c5740..a2e42cf4f799 100644
+index 5876e30c5740..06c897e138c8 100644
 --- a/kernel/Kconfig.preempt
 +++ b/kernel/Kconfig.preempt
-@@ -2,7 +2,7 @@
- 
- choice
- 	prompt "Preemption Model"
--	default PREEMPT_NONE
-+	default PREEMPT
- 
- config PREEMPT_NONE
- 	bool "No Forced Preemption (Server)"
 @@ -103,6 +103,7 @@ config PREEMPT_DYNAMIC
  config SCHED_CORE
  	bool "Core Scheduling for SMT"
