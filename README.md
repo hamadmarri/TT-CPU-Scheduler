@@ -37,11 +37,11 @@ Also TT is interactive where REALTIME tasks has a priority.
 
 
 ## Definitions
-Burst: is the time the task spent in the CPU before it choose to sleep/exit
+**Burst**: is the time the task spent in the CPU before it choose to sleep/exit
        the burst resets if the task slept/wait for IO or for timer interrupts.
        REALTIME tasks has relatively equal bursts.
 
-Wait: There is total time which is used in HRRN calculation, and last two waits
+**Wait**: There is total wait time which is used in HRRN calculation, and last two waits
       which are used to be relatively equal for REALTIME tasks. Waiting times
       for INTERACTIVE tasks must be not equal.
 
@@ -57,8 +57,11 @@ cat /proc/[1-9]*/task/[1-9]*/sched 2>/dev/null | grep task_type -B2 | \
 ```
 
 Usage examples:
+
 `ttdebug.sh | grep -i realtime`
+
 `watch -t "(ttdebug.sh | grep -i interactive)"`
+
 `watch -t "(ttdebug.sh | egrep -i 'webco|firefox')"`
 
 
@@ -88,7 +91,9 @@ tasks must have run/wait < 50%
 When comparing last two waits time to detect if it is a REALTIME task,
 the waiting time is not exactly similar since it is in nano sec. So
 it is better to have delta for error tolarance. See the equation below:
+```
 #define EQ_D(a, b, d) (LEQ(a, b + d) && GEQ(a, b - d))
+```
 
 the wait delta is 800us
 
