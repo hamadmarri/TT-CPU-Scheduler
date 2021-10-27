@@ -98,10 +98,12 @@ it is better to have delta for error tolarance. See the equation below:
 the wait delta is 800us
 
 `unsigned int __read_mostly rt_burst_delta = 2000000U;`
+
 Same as wait_delta, but for bursts check. burst delta is 2ms
 
 
 `unsigned int __read_mostly rt_burst_max = 4000000U;`
+
 REALTIME task's burst must be short, the max defalt is 4ms, if
 the burst exceeds this limit without sleep/wait, then task is not
 REALTIME {, anymore}.
