@@ -187,7 +187,7 @@ index 978fcfca5871..464b134de739 100644
  obj-$(CONFIG_SMP) += cpupri.o cpudeadline.o topology.o stop_task.o pelt.o
 diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
 new file mode 100644
-index 000000000000..3c1b61a94051
+index 000000000000..535ad38ede65
 --- /dev/null
 +++ b/kernel/sched/bs.c
 @@ -0,0 +1,1138 @@
@@ -213,8 +213,10 @@ index 000000000000..3c1b61a94051
 +#define RACE_TIME 40000000
 +#define FACTOR (RACE_TIME / HZ_PERIOD)
 +
-+#define YIELD_MARK(bsn)		((bsn)->deadline |= 0x8000000000000000ULL)
-+#define YIELD_UNMARK(bsn)	((bsn)->deadline &= 0x7FFFFFFFFFFFFFFFULL)
++#define YIELD_MARK(bsn)		do {(bsn)->deadline |= 0x8000000000000000ULL; \
++				 (bsn)->vruntime |= 0x8000000000000000ULL;} while (0)
++#define YIELD_UNMARK(bsn)	do {(bsn)->deadline &= 0x7FFFFFFFFFFFFFFFULL; \
++				 (bsn)->vruntime &= 0x7FFFFFFFFFFFFFFFULL;} while (0)
 +
 +#define IS_REALTIME(bsn)	((bsn)->task_type == TT_REALTIME)
 +#define IS_INTERACTIVE(bsn)	((bsn)->task_type == TT_INTERACTIVE)
@@ -223,10 +225,8 @@ index 000000000000..3c1b61a94051
 +#define IS_BATCH(bsn)		((bsn)->task_type == TT_BATCH)
 +
 +#define GEQ(a, b) ((s64)((a) - (b)) >= 0)	// is a >= b
-+#define GRT(a, b) ((s64)((a) - (b)) > 0)	// is a >  b
 +#define LEQ(a, b) ((s64)((a) - (b)) <= 0)	// is a <= b
 +#define LES(a, b) ((s64)((a) - (b)) < 0)	// is a <  b
-+#define EQ(a, b) ((s64)((a) - (b)) == 0)	// is a == b
 +#define EQ_D(a, b, d) (LEQ(a, b + d) && GEQ(a, b - d))
 +
 +#define HRRN_PERCENT(bsn) (1000 - \
