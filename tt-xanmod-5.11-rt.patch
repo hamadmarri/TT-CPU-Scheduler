@@ -1307,10 +1307,10 @@ index 000000000..4a0ebab83
 +}
 diff --git a/kernel/sched/bs.h b/kernel/sched/bs.h
 new file mode 100644
-index 000000000..40aac9c93
+index 000000000..d280465cb
 --- /dev/null
 +++ b/kernel/sched/bs.h
-@@ -0,0 +1,283 @@
+@@ -0,0 +1,281 @@
 +
 +unsigned int sysctl_sched_min_granularity			= 750000ULL;
 +static unsigned int normalized_sysctl_sched_min_granularity	= 750000ULL;
@@ -1370,8 +1370,6 @@ index 000000000..40aac9c93
 +
 +	return 0;
 +}
-+
-+const_debug unsigned int sysctl_sched_migration_cost	= 500000UL;
 +
 +void __init sched_init_granularity(void)
 +{
