@@ -66,7 +66,7 @@ Usage examples:
 
 
 ## Testing
-First you need to make sure the HZ=803, this works with the deadline values.
+There are two Hz values that are added (833Hz and 1666Hz). You can try/ignore them.
 Test the overall performance, latency, responsiveness. For example, compile
 the kernel while running `vblank_mode=1 glxgears` and see how much frames it
 became. Compare the results with other schedulers. See the overall responsiveness
