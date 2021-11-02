@@ -26,11 +26,11 @@ is that glxgears are detected to be REALTIME task and compiling threads
 are detected to be CPU_BOUND and BATCH. In tasks.ods you can see that
 rt is chosen to run in the CPU over all other tasks (it has high priority).
 
-The scheduler has many rules and policies. First it looks like MLFQ scheduling
-in which it is a priority policy such that REALTIME has the highest priority,
-then INTERACTIVE (somehow), then the rest. However, it is not plain priority,
-see the `preemption` tab in tasks.ods and notice that TT also compares tasks
-based on their virtual finishing time, hrrn and deadline based on the case.
+TT gives RT tasks a `-20` prio in vruntime calculations. This boosts RT
+tasks over other tasks. The preemption rules are purely HRRN where RT tasks
+have a priority since their vruntimes are relatively less than other types.
+The reason of using HRRN instead of hard level picking is to smooth out the
+preemtions and to prevent any chance of starvation.
 
 TT must be responsive as CacULE (on my machine it has better responsiveness resutls).
 Also TT is interactive where REALTIME tasks has a priority.
@@ -83,30 +83,10 @@ about the type of sleeping system processes.
 
 
 ## sysctl
-`unsigned int __read_mostly interactive_hrrn = 2U;`
-Usually you don't need to change it. It means INTERACTIVE
-tasks must have run/wait < 50%
+`kernel.sched_tt_max_lifetime`
 
-`unsigned int __read_mostly rt_wait_delta = 800000U;`
-When comparing last two waits time to detect if it is a REALTIME task,
-the waiting time is not exactly similar since it is in nano sec. So
-it is better to have delta for error tolarance. See the equation below:
-```
-#define EQ_D(a, b, d) (LEQ(a, b + d) && GEQ(a, b - d))
-```
-
-the wait delta is 800us
-
-`unsigned int __read_mostly rt_burst_delta = 2000000U;`
-
-Same as wait_delta, but for bursts check. burst delta is 2ms
-
-
-`unsigned int __read_mostly rt_burst_max = 4000000U;`
-
-REALTIME task's burst must be short, the max defalt is 4ms, if
-the burst exceeds this limit without sleep/wait, then task is not
-REALTIME {, anymore}.
+Defaul is 22s. This is the tasks' maximum life time to normalize their life
+time and vruntime. Similar to CacULE's `cacule_max_lifetime`.
 
 
 Thank you
