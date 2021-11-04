@@ -81,6 +81,8 @@ whatever type. Those task are sleeping for long time, so when they wake up their
 type will be INTERACITVE sine they have very hight HRRN value. So, don't worry
 about the type of sleeping system processes.
 
+## RT patch
+You need to make sure you select `CONFIG_PREEMPT_RT=y`.
 
 ## sysctl
 `kernel.sched_tt_max_lifetime`
