@@ -87,7 +87,7 @@ You need to make sure you select `CONFIG_PREEMPT_RT=y`.
 ## sysctl
 `kernel.sched_tt_max_lifetime`
 
-Defaul is 22s. This is the tasks' maximum life time to normalize their life
+Default is 22s. This is the tasks' maximum life time to normalize their life
 time and vruntime. Similar to CacULE's `cacule_max_lifetime`.
 
 
