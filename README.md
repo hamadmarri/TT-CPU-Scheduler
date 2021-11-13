@@ -98,8 +98,8 @@ time and vruntime. Similar to CacULE's `cacule_max_lifetime`.
 * Change HRRN to IS (including sysctl tunning)
 * Port Starving Factor to TT (including sysctl tunning)
 * Add sub-kconfig option to TT for full tasks accounting/stats -> to allow clamp feature and fix pstate issues
-* Separate patch for high values of HZ's
-* Separate patch for RT
+* Separate patch for high values of HZ's (✅)
+* Separate patch for RT (✅)
 * Separate patch for a TT version which is based on CFS (to have full CFS features)
 
 Thank you
