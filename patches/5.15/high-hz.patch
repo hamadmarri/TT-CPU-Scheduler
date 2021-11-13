@@ -758,6 +758,22 @@ index 95ac6086370b..640531647439 100644
  }
  
  inline u32 rtw_ms_to_systime(u32 ms)
+diff --git a/drivers/tty/serial/kgdb_nmi.c b/drivers/tty/serial/kgdb_nmi.c
+index 55c3c9db7462..42ceaeb10c9b 100644
+--- a/drivers/tty/serial/kgdb_nmi.c
++++ b/drivers/tty/serial/kgdb_nmi.c
+@@ -85,7 +85,11 @@ static struct console kgdb_nmi_console = {
+  * to make copy-pasting to the terminal usable.
+  */
+ #define KGDB_NMI_BAUD		115200
++#if HZ > 7200
++#define KGDB_NMI_FIFO_SIZE 2
++#else
+ #define KGDB_NMI_FIFO_SIZE	roundup_pow_of_two(KGDB_NMI_BAUD / 8 / HZ)
++#endif
+ 
+ struct kgdb_nmi_tty_priv {
+ 	struct tty_port port;
 diff --git a/drivers/watchdog/da9052_wdt.c b/drivers/watchdog/da9052_wdt.c
 index d708c091bf1b..9e3bef0035d1 100644
 --- a/drivers/watchdog/da9052_wdt.c
@@ -771,6 +787,19 @@ index d708c091bf1b..9e3bef0035d1 100644
  	if (msec < DA9052_TWDMIN)
  		mdelay(msec);
  
+diff --git a/include/linux/jiffies.h b/include/linux/jiffies.h
+index 5e13f801c902..13122c8b1e1a 100644
+--- a/include/linux/jiffies.h
++++ b/include/linux/jiffies.h
+@@ -40,6 +40,8 @@
+ # define SHIFT_HZ	12
+ #elif HZ >= 6144 && HZ < 12288
+ # define SHIFT_HZ	13
++#elif HZ >= 12288 && HZ < 24576
++# define SHIFT_HZ	14
+ #else
+ # error Invalid value of HZ.
+ #endif
 diff --git a/include/net/tcp.h b/include/net/tcp.h
 index 60c384569e9c..109c78e37b0f 100644
 --- a/include/net/tcp.h
