@@ -135,10 +135,10 @@ index 978fcfca5871..464b134de739 100644
  obj-$(CONFIG_SMP) += cpupri.o cpudeadline.o topology.o stop_task.o pelt.o
 diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
 new file mode 100644
-index 000000000000..df645d722e76
+index 000000000000..793bb1c338d1
 --- /dev/null
 +++ b/kernel/sched/bs.c
-@@ -0,0 +1,1180 @@
+@@ -0,0 +1,1277 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * TT Scheduler Class (SCHED_NORMAL/SCHED_BATCH)
@@ -980,17 +980,114 @@ index 000000000000..df645d722e76
 +	return new_cpu;
 +}
 +
-+static int
-+can_migrate_task(struct task_struct *p, int dst_cpu, struct rq *src_rq)
++/*
++ * Is this task likely cache-hot:
++ */
++static int task_hot(struct task_struct *p, struct rq *dst_rq, struct rq *src_rq)
 +{
-+	if (task_running(src_rq, p))
++	s64 delta;
++
++	lockdep_assert_rq_held(src_rq);
++
++	if (p->sched_class != &fair_sched_class)
 +		return 0;
++
++	if (unlikely(task_has_idle_policy(p)))
++		return 0;
++
++	/* SMT siblings share cache */
++	if (cpus_share_cache(cpu_of(dst_rq), cpu_of(src_rq)))
++		return 0;
++
++	if (sysctl_sched_migration_cost == -1)
++		return 1;
++
++	if (sysctl_sched_migration_cost == 0)
++		return 0;
++
++	delta = sched_clock() - p->se.exec_start;
++
++	return delta < (s64)sysctl_sched_migration_cost;
++}
++
++#ifdef CONFIG_NUMA_BALANCING
++/*
++ * Returns 1, if task migration degrades locality
++ * Returns 0, if task migration improves locality i.e migration preferred.
++ * Returns -1, if task migration is not affected by locality.
++ */
++static int
++migrate_degrades_locality(struct task_struct *p, struct rq *dst_rq, struct rq *src_rq)
++{
++	struct numa_group *numa_group = rcu_dereference(p->numa_group);
++	unsigned long src_weight, dst_weight;
++	int src_nid, dst_nid, dist;
++
++	if (!static_branch_likely(&sched_numa_balancing))
++		return -1;
++
++	src_nid = cpu_to_node(cpu_of(src_rq));
++	dst_nid = cpu_to_node(cpu_of(dst_rq));
++
++	if (src_nid == dst_nid)
++		return -1;
++
++	/* Migrating away from the preferred node is always bad. */
++	if (src_nid == p->numa_preferred_nid) {
++		if (src_rq->nr_running > src_rq->nr_preferred_running)
++			return 1;
++		else
++			return -1;
++	}
++
++	/* Encourage migration to the preferred node. */
++	if (dst_nid == p->numa_preferred_nid)
++		return 0;
++
++	/* Leaving a core idle is often worse than degrading locality. */
++	if (dst_rq->idle_balance)
++		return -1;
++
++	dist = node_distance(src_nid, dst_nid);
++	if (numa_group) {
++		src_weight = group_weight(p, src_nid, dist);
++		dst_weight = group_weight(p, dst_nid, dist);
++	} else {
++		src_weight = task_weight(p, src_nid, dist);
++		dst_weight = task_weight(p, dst_nid, dist);
++	}
++
++	return dst_weight < src_weight;
++}
++
++#else
++static inline int migrate_degrades_locality(struct task_struct *p,
++					     struct rq *dst_rq, struct rq *src_rq)
++{
++	return -1;
++}
++#endif
++
++static int
++can_migrate_task(struct task_struct *p, struct rq *dst_rq, struct rq *src_rq)
++{
++	int tsk_cache_hot;
 +
 +	/* Disregard pcpu kthreads; they are where they need to be. */
 +	if (kthread_is_per_cpu(p))
 +		return 0;
 +
-+	if (!cpumask_test_cpu(dst_cpu, p->cpus_ptr))
++	if (!cpumask_test_cpu(cpu_of(dst_rq), p->cpus_ptr))
++		return 0;
++
++	if (task_running(src_rq, p))
++		return 0;
++
++	tsk_cache_hot = migrate_degrades_locality(p, dst_rq, src_rq);
++	if (tsk_cache_hot == -1)
++		tsk_cache_hot = task_hot(p, dst_rq, src_rq);
++
++	if (tsk_cache_hot > 0)
 +		return 0;
 +
 +	return 1;
@@ -1032,7 +1129,7 @@ index 000000000000..df645d722e76
 +
 +	while (ttn) {
 +		p = task_of(se_of(ttn));
-+		if (can_migrate_task(p, cpu_of(dist_rq), src_rq)) {
++		if (can_migrate_task(p, dist_rq, src_rq)) {
 +			pull_from(dist_rq, src_rq, src_rf, p);
 +			return 1;
 +		}
@@ -1321,10 +1418,10 @@ index 000000000000..df645d722e76
 +}
 diff --git a/kernel/sched/bs.h b/kernel/sched/bs.h
 new file mode 100644
-index 000000000000..721eb690abeb
+index 000000000000..b3d99cf13576
 --- /dev/null
 +++ b/kernel/sched/bs.h
-@@ -0,0 +1,306 @@
+@@ -0,0 +1,309 @@
 +#define YIELD_MARK(ttn)		((ttn)->vruntime |= 0x8000000000000000ULL)
 +#define YIELD_UNMARK(ttn)	((ttn)->vruntime &= 0x7FFFFFFFFFFFFFFFULL)
 +
@@ -1376,6 +1473,9 @@ index 000000000000..721eb690abeb
 +#endif
 +	/* Tell new CPU we are migrated */
 +	p->se.avg.last_update_time = 0;
++
++	/* We have migrated, no longer consider this task hot */
++	p->se.exec_start = 0;
 +
 +	YIELD_UNMARK(&p->se.tt_node);
 +
