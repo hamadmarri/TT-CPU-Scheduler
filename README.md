@@ -91,10 +91,15 @@ Default is 22s. This is the tasks' maximum life time to normalize their life
 time and vruntime. Similar to CacULE's `cacule_max_lifetime`.
 
 
+`kernel.sched_tt_rt_prio`
+Default is -20. Range [-20, 39]. In case that tasks with types other than realtime
+are starving because of realtime tasks' priorities are too high, you can soften
+the priority of realtime tasks. The -20 is the highest, 39 is the least priority.
+
 
 
 ## Future Plan:
-* Add sysctl to soften RT task priority
+* Add sysctl to soften RT task priority (✅)
 * Change HRRN to IS (including sysctl tunning)
 * Port Starving Factor to TT (including sysctl tunning)
 * Add sub-kconfig option to TT for full tasks accounting/stats -> to allow clamp feature and fix pstate issues (✅)
