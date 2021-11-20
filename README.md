@@ -100,8 +100,8 @@ the priority of realtime tasks. The -20 is the highest, 39 is the least priority
 
 ## Future Plan:
 * Add sysctl to soften RT task priority (✅)
-* Change HRRN to IS (including sysctl tunning)
-* Port Starving Factor to TT (including sysctl tunning)
+* ~~Change HRRN to IS (including sysctl tunning)~~
+* ~~Port Starving Factor to TT (including sysctl tunning)~~
 * Add sub-kconfig option to TT for full tasks accounting/stats -> to allow clamp feature and fix pstate issues (✅)
 * Separate patch for high values of HZ's (✅)
 * Separate patch for RT (✅)
