@@ -105,7 +105,7 @@ the priority of realtime tasks. The -20 is the highest, 39 is the least priority
 * Add sub-kconfig option to TT for full tasks accounting/stats -> to allow clamp feature and fix pstate issues (✅)
 * Separate patch for high values of HZ's (✅)
 * Separate patch for RT (✅)
-* Separate patch for a TT version which is based on CFS (to have full CFS features)
+* Separate patch for a TT version which is based on CFS (to have full CFS features) (✅)
 
 Thank you
 
