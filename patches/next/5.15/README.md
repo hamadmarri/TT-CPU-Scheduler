@@ -19,7 +19,9 @@
 It can be set to 3 values
 
 0: Normal TT balancer
+
 1: Candidate Balancer (which is an addition to normal TT balancer)
+
 2: Global runqueue GRQ
 
 You can change the balancer option in run time.
