@@ -1,17 +1,17 @@
 diff --git a/kernel/sched/bs.c b/kernel/sched/bs.c
-index 758cd410d6e6..1f455ee12b7a 100644
+index 4c711467e17c..d95fea4f4641 100644
 --- a/kernel/sched/bs.c
 +++ b/kernel/sched/bs.c
-@@ -640,7 +640,7 @@ static void
- check_preempt_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr)
- {
- 	if (pick_next_entity(cfs_rq, curr) != curr)
+@@ -869,7 +869,7 @@ check_preempt_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr)
+ 			__update_candidate(cfs_rq, &next->tt_node);
+ 		}
+ 
 -		resched_curr(rq_of(cfs_rq));
 +		resched_curr_lazy(rq_of(cfs_rq));
- }
- 
- static void
-@@ -688,7 +688,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
+ 	} else if (IS_CAND_BL_ENABLED) {
+ 		clear_this_candidate(curr);
+ 	}
+@@ -922,7 +922,7 @@ static void check_preempt_wakeup(struct rq *rq, struct task_struct *p, int wake_
  	return;
  
  preempt:
@@ -20,7 +20,7 @@ index 758cd410d6e6..1f455ee12b7a 100644
  }
  
  #ifdef CONFIG_SMP
-@@ -1115,7 +1115,7 @@ static void task_fork_fair(struct task_struct *p)
+@@ -1860,7 +1860,7 @@ static void task_fork_fair(struct task_struct *p)
  		update_curr(cfs_rq);
  
  		if (sysctl_sched_child_runs_first)
@@ -30,10 +30,10 @@ index 758cd410d6e6..1f455ee12b7a 100644
  
  	rq_unlock(rq, &rf);
 diff --git a/kernel/sched/bs.h b/kernel/sched/bs.h
-index d413aad1d0a3..21f2dee6bfa3 100644
+index b3d99cf13576..a464f09133f4 100644
 --- a/kernel/sched/bs.h
 +++ b/kernel/sched/bs.h
-@@ -233,7 +233,7 @@ prio_changed_fair(struct rq *rq, struct task_struct *p, int oldprio)
+@@ -237,7 +237,7 @@ prio_changed_fair(struct rq *rq, struct task_struct *p, int oldprio)
  	 */
  	if (task_current(rq, p)) {
  		if (p->prio > oldprio)
