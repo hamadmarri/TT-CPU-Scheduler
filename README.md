@@ -51,7 +51,7 @@ time and vruntime. Similar to CacULE's `cacule_max_lifetime`.
 
 
 `kernel.sched_tt_rt_prio`
-Default is -20. Range [-20, 39]. In case that tasks with types other than realtime
+Default is -20. Range [-20, 19]. In case that tasks with types other than realtime
 are starving because of realtime tasks' priorities are too high, you can soften
 the priority of realtime tasks. The -20 is the highest, 39 is the least priority.
 
