@@ -71,7 +71,7 @@ You can change the balancer option at run time.
 More info about load balancing [here](https://github.com/hamadmarri/TT-CPU-Scheduler/issues/12)
 
 ## Support
-Telegram: https://t.me/ttcpusched
+Telegram: https://t.me/tt_sched
 
 Thank you
 
