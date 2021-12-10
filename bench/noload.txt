@@ -1,0 +1,31 @@
+python3 responsiveness.py -i 1 -t 120
+
+
+TT
+--
+0 total response time:  0.7603903589995298s  runs:  60  average:  0.012673172649992162s
+0 total response time:  0.7997638109998206s  runs:  60  average:  0.01332939684999701s
+0 total response time:  0.7996607569984917s  runs:  60  average:  0.013327679283308195s
+0 total response time:  0.8334049139994022s  runs:  60  average:  0.013890081899990036s
+
+
+CB
+--
+0 total response time:  0.6333407789988996s  runs:  60  average:  0.01055567964998166s
+0 total response time:  0.5853951860021880s  runs:  60  average:  0.0097565864333698s
+0 total response time:  0.5852959600006216s  runs:  60  average:  0.009754932666677025s
+0 total response time:  0.5845746080012759s  runs:  60  average:  0.009742910133354599s
+
+
+GRQ
+---
+kernel.sched_tt_grq_balance_ms = 6
+0 total response time:  0.5600439709996863s  runs:  60  average:  0.009334066183328105s
+
+
+kernel.sched_tt_grq_balance_ms = 0
+0 total response time:  0.5680551970035594s  runs:  60  average:  0.009467586616725992s
+0 total response time:  0.5646717979980167s  runs:  60  average:  0.009411196633300279s
+0 total response time:  0.6503030299982129s  runs:  60  average:  0.010838383833303548s
+
+

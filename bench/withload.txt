@@ -1,0 +1,72 @@
+TT
+--
+0 prime time:  89.53474763899976s
+1 prime time:  89.55494050200014s
+2 prime time:  89.53426570900001s
+3 prime time:  89.5506105710001s
+0 total response time:  0.706384954000896s  runs:  44  average:  0.01605420350002036s
+
+0 prime time:  90.25753216300018s
+1 prime time:  90.14102516100002s
+2 prime time:  90.25468018399988s
+3 prime time:  90.20302776400013s
+0 total response time:  0.634916193000663s  runs:  44  average:  0.014429913477287797s
+
+0 prime time:  90.81236872800037s
+1 prime time:  90.89920019700003s
+2 prime time:  90.99882594500014s
+3 prime time:  90.8809520269997s
+0 total response time:  0.6412146249967918s  runs:  45  average:  0.014249213888817596s
+
+
+CB
+--
+0 prime time:  89.3535862180006s
+1 prime time:  89.36573038699953s
+2 prime time:  89.44395066600009s
+3 prime time:  89.38548546199945s
+0 total response time:  0.583334533002926s  runs:  44  average:  0.013257603022793774s
+
+0 prime time:  90.6412059029999s
+1 prime time:  90.69868053099981s
+2 prime time:  90.65691312299987s
+3 prime time:  90.61117433899926s
+0 total response time:  0.6016008819970011s  runs:  45  average:  0.013368908488822247s
+
+0 prime time:  90.29262963400015s
+1 prime time:  90.26033712200024s
+2 prime time:  90.23116229700008s
+3 prime time:  90.21130424000057s
+0 total response time:  0.6114216939968173s  runs:  44  average:  0.013895947590836758s
+
+
+GRQ
+---
+kernel.sched_tt_grq_balance_ms=0
+
+0 prime time:  91.31812582399994s
+1 prime time:  91.21958268100002s
+2 prime time:  91.2407865780001s
+3 prime time:  91.31207598799983s
+0 total response time:  0.6027548649997243s  runs:  45  average:  0.013394552555549428s
+
+0 prime time:  89.12163296900007s
+1 prime time:  89.02401197100005s
+2 prime time:  88.98522495099996s
+3 prime time:  89.12209388200006s
+0 total response time:  0.5954737980000573s  runs:  44  average:  0.013533495409092211s
+
+
+kernel.sched_tt_grq_balance_ms=6
+
+0 prime time:  90.42722082099999s
+1 prime time:  90.45836549799992s
+2 prime time:  90.44603683499986s
+3 prime time:  90.43758897599992s
+0 total response time:  0.6095525839991751s  runs:  44  average:  0.013853467818163072s
+
+0 prime time:  90.15728543799992s
+1 prime time:  90.15571811900008s
+2 prime time:  90.10298302000001s
+3 prime time:  90.17584861800015s
+0 total response time:  0.5925950929999999s  runs:  44  average:  0.013468070295454543s
