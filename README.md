@@ -70,6 +70,15 @@ You can change the balancer option at run time.
 
 More info about load balancing [here](https://github.com/hamadmarri/TT-CPU-Scheduler/issues/12)
 
+
+`kernel.sched_tt_grq_balance_ms`
+
+Default is 6ms. It is only used in GRQ. For ultimate responsive system set it to 0ms, but this will
+cause many locks to the global runqueue and thus reduce throughput. The 6ms is reasonable for both
+latency and throughput. It also depends on the number of CPUs.
+
+
+
 ## Support
 Telegram: https://t.me/tt_sched
 
