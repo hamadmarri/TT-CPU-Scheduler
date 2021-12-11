@@ -60,11 +60,12 @@ the priority of realtime tasks. The -20 is the highest, 19 is the least priority
 
 `kernel.sched_tt_balancer_opt`
 
-It can be set to 3 values:
+It can be set to 4 values:
 
 - 0: Normal TT balancer
 - 1: Candidate Balancer (which is an addition to normal TT balancer)
 - 2: Global runqueue GRQ
+- 3: Power save balancer
 
 You can change the balancer option at run time.
 
