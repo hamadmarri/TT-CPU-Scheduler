@@ -1,0 +1,36 @@
+
+5.19.9-200.fc36.x86_64
+----------------------
+kernel.sched_autogroup_enabled = 0 ::::::::::::::::::::::
+0 prime time:  35.469141285999996s
+1 prime time:  35.345276634999976s
+2 prime time:  35.779488087000004s
+3 prime time:  35.61634095500003s
+0 total response time:  0.40051587099995345s  runs:  17  average:  0.023559757117644322s
+
+0 prime time:  35.54784493100004s
+1 prime time:  35.871433927s
+2 prime time:  36.13466424899997s
+3 prime time:  35.17241075700002s
+0 total response time:  0.410657545000106s  runs:  17  average:  0.02415632617647682s
+
+0 prime time:  35.96082537800004s
+1 prime time:  35.407732969999984s
+2 prime time:  35.60084870700001s
+3 prime time:  35.582415716000014s
+0 total response time:  0.1652186160001179s  runs:  17  average:  0.009718742117653993s
+
+
+kernel.sched_autogroup_enabled = 1 :::::::::::::::::::::::::
+0 prime time:  35.45645472499996s
+1 prime time:  35.203333758999975s
+2 prime time:  35.15904634799995s
+3 prime time:  36.15747064799996s
+0 total response time:  0.2027141409998876s  runs:  17  average:  0.011924361235287506s
+
+0 prime time:  36.23132453899996s
+1 prime time:  35.33926284000006s
+2 prime time:  35.592025788s
+3 prime time:  35.742621811999925s
+0 total response time:  0.2805695880001622s  runs:  17  average:  0.016504093411774248s
+

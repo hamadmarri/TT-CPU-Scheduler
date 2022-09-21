@@ -1,0 +1,105 @@
+
+6.0.0-rc5+
+-------------
+
+kernel.sched_tt_balancer_opt = 1
+--------------------------------
+old::::::::::::::::::::::::::::::::::::::::::::::::::
+0 prime time:  35.793453123000006s
+1 prime time:  35.810136414s
+2 prime time:  35.793687170999995s
+3 prime time:  35.57441241200001s
+0 total response time:  0.06426046999997936s  runs:  17  average:  0.00378002764705761s
+
+0 prime time:  35.37740587600001s
+1 prime time:  35.594806059999996s
+2 prime time:  35.554556590999994s
+3 prime time:  35.43161092399998s
+0 total response time:  0.06307063800002766s  runs:  17  average:  0.0037100375294133914s
+
+0 prime time:  35.60015570200002s
+1 prime time:  35.37976958500002s
+2 prime time:  35.60371834999998s
+3 prime time:  35.442877701999976s
+0 total response time:  0.06414199799999665s  runs:  17  average:  0.003773058705882156s
+
+0 prime time:  35.256641563s
+1 prime time:  35.47811914099999s
+2 prime time:  35.651649285000005s
+3 prime time:  35.553071528000004s
+0 total response time:  0.06333913499997834s  runs:  17  average:  0.003725831470586961s
+
+0 prime time:  35.58518702099991s
+1 prime time:  35.55042024199997s
+2 prime time:  35.33404312199991s
+3 prime time:  35.700639522000074s
+0 total response time:  0.0651923580003313s  runs:  17  average:  0.003834844588254782s
+
+avg:		0.06400092	0.00376475998823898
+
+some adjustments :::::::::::::::::::::::::::::::::::::
+0 prime time:  35.426013602999994s
+1 prime time:  35.129941026000004s
+2 prime time:  35.606369883000006s
+3 prime time:  35.621967385999994s
+0 total response time:  0.0721849909999932s  runs:  17  average:  0.004246175941176071s
+
+0 prime time:  35.56146968099998s
+1 prime time:  35.40177131600001s
+2 prime time:  35.792365107999984s
+3 prime time:  35.61640545899999s
+0 total response time:  0.06476304300002766s  runs:  17  average:  0.00380959076470751s
+
+0 prime time:  35.81490277s
+1 prime time:  35.56625881900001s
+2 prime time:  35.574478551s
+3 prime time:  35.761789841999985s
+0 total response time:  0.06333213999999998s  runs:  17  average:  0.003725419999999999s
+
+0 prime time:  35.75617741099995s
+1 prime time:  35.49372890300003s
+2 prime time:  35.80860293699999s
+3 prime time:  35.25717592899997s
+0 total response time:  0.06366049500007875s  runs:  17  average:  0.0037447350000046325s
+
+0 prime time:  35.661163989000045s
+1 prime time:  35.53744942600002s
+2 prime time:  35.559477023s
+3 prime time:  35.710674778s
+0 total response time:  0.0639020539999251s  runs:  17  average:  0.0037589443529367707s
+
+avg:		0.0655685446000049	0.003856973211765
+
+kernel.sched_tt_balancer_opt = 2
+--------------------------------
+0 prime time:  35.81711566199999s
+1 prime time:  35.33847833200002s
+2 prime time:  35.76824870899998s
+3 prime time:  35.37811073s
+0 total response time:  0.06500413200001276s  runs:  17  average:  0.0038237724705889858s
+
+0 prime time:  35.92752350000001s
+1 prime time:  35.73001113700002s
+2 prime time:  35.08212976899995s
+3 prime time:  35.49722400899998s
+0 total response time:  0.0642326699997966s  runs:  17  average:  0.0037783923529292117s
+
+0 prime time:  35.708117654000034s
+1 prime time:  36.040645391s
+2 prime time:  35.21263159s
+3 prime time:  35.12303844399992s
+0 total response time:  0.0663156059999892s  runs:  17  average:  0.003900917999999365s
+
+0 prime time:  35.26649183299992s
+1 prime time:  35.244786311999974s
+2 prime time:  35.79330689599999s
+3 prime time:  35.78048445999991s
+0 total response time:  0.06370791500000905s  runs:  17  average:  0.0037475244117652386s
+
+0 prime time:  35.28893407800001s
+1 prime time:  35.25934836099998s
+2 prime time:  35.34997639200003s
+3 prime time:  35.967962084999954s
+0 total response time:  0.0648459929997216s  runs:  17  average:  0.003814470176454212s
+
+avg:		0.0648212631999058	0.0038130154823474

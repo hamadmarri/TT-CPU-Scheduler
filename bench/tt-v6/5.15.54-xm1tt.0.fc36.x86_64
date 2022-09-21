@@ -1,0 +1,23 @@
+
+5.15.54-xm1tt.0.fc36.x86_64
+-------------------------------
+kernel.sched_tt_balancer_opt = 1
+
+0 prime time:  35.525063526s
+1 prime time:  35.381425621999995s
+2 prime time:  35.34004031900001s
+3 prime time:  35.337006136s
+0 total response time:  0.07377664500002368s  runs:  17  average:  0.004339802647060216s
+
+0 prime time:  35.443334127000014s
+1 prime time:  35.60967546200001s
+2 prime time:  35.42618343799998s
+3 prime time:  35.34943473999999s
+0 total response time:  0.06400774799993769s  runs:  17  average:  0.0037651616470551585s
+
+0 prime time:  35.55723280799998s
+1 prime time:  35.57847922600001s
+2 prime time:  35.46801801999999s
+3 prime time:  35.37582314000002s
+0 total response time:  0.06652938500008077s  runs:  17  average:  0.003913493235298869s
+
