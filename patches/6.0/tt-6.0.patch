@@ -1,9 +1,3 @@
-commit 64f839590fa81e78cd95a2bb1268b65228349983
-Author: hamadmarri <hamad.s.almarri@gmail.com>
-Date:   Mon Sep 19 18:46:18 2022 +0300
-
-    First draft TT v6.0 rc
-
 diff --git a/fs/proc/proc_sysctl.c b/fs/proc/proc_sysctl.c
 index 021e83fe831f..6e432fcc8583 100644
 --- a/fs/proc/proc_sysctl.c
@@ -364,7 +358,7 @@ index 667876da8382..f549b4c53f98 100644
  	PN(se.vruntime);
  	PN(se.sum_exec_runtime);
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index 914096c5b1ae..d0322fb4059d 100644
+index 914096c5b1ae..0b911afe0e92 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
 @@ -105,6 +105,64 @@ unsigned int sysctl_sched_idle_min_granularity			= 750000ULL;
@@ -372,7 +366,7 @@ index 914096c5b1ae..d0322fb4059d 100644
  static unsigned int sched_nr_latency = 8;
  
 +#ifdef CONFIG_TT_SCHED
-+unsigned int __read_mostly tt_balancer_opt	= 0;
++unsigned int __read_mostly tt_balancer_opt	= TT_BL_CFS;
 +unsigned int __read_mostly tt_max_lifetime	= 22000; // in ms
 +int __read_mostly tt_rt_prio			= -20;
 +int __read_mostly tt_interactive_prio		= -10;
@@ -1477,7 +1471,7 @@ index 914096c5b1ae..d0322fb4059d 100644
  
  #else
 +#if CONFIG_TT_SCHED
-+migrate_degrades_locality_tt(struct task_struct *p, struct rq *dst_rq, struct rq *src_rq)
++static int migrate_degrades_locality_tt(struct task_struct *p, struct rq *dst_rq, struct rq *src_rq)
 +{
 +	return -1;
 +}
@@ -2060,7 +2054,7 @@ index 914096c5b1ae..d0322fb4059d 100644
  	/*
  	 * Don't need to rebalance while attached to NULL domain or
  	 * runqueue CPU is not active
-@@ -11262,9 +12556,77 @@ void trigger_load_balance(struct rq *rq)
+@@ -11262,10 +12556,80 @@ void trigger_load_balance(struct rq *rq)
  	if (unlikely(on_null_domain(rq) || !cpu_active(cpu_of(rq))))
  		return;
  
@@ -2121,11 +2115,6 @@ index 914096c5b1ae..d0322fb4059d 100644
 +		update_blocked_averages(this_rq->cpu);
 +	}
 +
-+	if (time_after_eq(jiffies, this_rq->lat_decay)) {
-+		this_rq->lat_decay = jiffies + msecs_to_jiffies(4);
-+		dec_nr_lat_sensitive(this_rq->cpu);
-+	}
-+
 +	goto tt_balance;
 +
 +cfs_balance:
@@ -2134,11 +2123,19 @@ index 914096c5b1ae..d0322fb4059d 100644
  	if (time_after_eq(jiffies, rq->next_balance))
  		raise_softirq(SCHED_SOFTIRQ);
  
++#ifdef CONFIG_TT_SCHED
 +tt_balance:
++	if (time_after_eq(jiffies, this_rq->lat_decay)) {
++		this_rq->lat_decay = jiffies + msecs_to_jiffies(4);
++		dec_nr_lat_sensitive(this_rq->cpu);
++	}
++
  	nohz_balancer_kick(rq);
++#endif
  }
  
-@@ -11437,6 +12799,19 @@ static void task_fork_fair(struct task_struct *p)
+ static void rq_online_fair(struct rq *rq)
+@@ -11437,6 +12801,19 @@ static void task_fork_fair(struct task_struct *p)
  	struct rq *rq = this_rq();
  	struct rq_flags rf;
  
@@ -2158,7 +2155,7 @@ index 914096c5b1ae..d0322fb4059d 100644
  	rq_lock(rq, &rf);
  	update_rq_clock(rq);
  
-@@ -11448,7 +12823,7 @@ static void task_fork_fair(struct task_struct *p)
+@@ -11448,7 +12825,7 @@ static void task_fork_fair(struct task_struct *p)
  	}
  	place_entity(cfs_rq, se, 1);
  
