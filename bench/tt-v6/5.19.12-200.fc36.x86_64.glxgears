@@ -1,0 +1,116 @@
+5.19.12-200.fc36.x86_64
+-----------------------
+kernel.sched_autogroup_enabled = 1
+-----------------------------------
+
+14616 frames in 5.0 seconds = 2923.140 FPS
+14683 frames in 5.0 seconds = 2936.490 FPS
+14467 frames in 5.0 seconds = 2893.368 FPS
+14724 frames in 5.0 seconds = 2944.642 FPS
+14543 frames in 5.0 seconds = 2908.445 FPS
+14349 frames in 5.0 seconds = 2869.707 FPS
+14553 frames in 5.0 seconds = 2910.469 FPS
+14519 frames in 5.0 seconds = 2903.773 FPS
+14672 frames in 5.0 seconds = 2934.256 FPS
+14351 frames in 5.0 seconds = 2870.060 FPS
+14512 frames in 5.0 seconds = 2902.202 FPS
+14832 frames in 5.0 seconds = 2966.294 FPS
+14585 frames in 5.0 seconds = 2916.993 FPS
+14479 frames in 5.0 seconds = 2895.681 FPS
+14509 frames in 5.0 seconds = 2901.716 FPS
+14540 frames in 5.0 seconds = 2907.852 FPS
+14750 frames in 5.0 seconds = 2949.866 FPS
+14484 frames in 5.0 seconds = 2896.797 FPS
+14698 frames in 5.0 seconds = 2939.533 FPS
+14657 frames in 5.0 seconds = 2931.204 FPS
+14419 frames in 5.0 seconds = 2878.440 FPS
+14465 frames in 5.0 seconds = 2892.946 FPS
+14511 frames in 5.0 seconds = 2901.821 FPS
+14379 frames in 5.0 seconds = 2875.792 FPS
+14463 frames in 5.0 seconds = 2892.531 FPS
+14474 frames in 5.0 seconds = 2894.634 FPS
+14499 frames in 5.0 seconds = 2893.289 FPS
+14238 frames in 5.0 seconds = 2847.545 FPS
+14706 frames in 5.0 seconds = 2941.077 FPS
+14448 frames in 5.0 seconds = 2889.594 FPS
+14223 frames in 5.0 seconds = 2844.586 FPS
+14345 frames in 5.0 seconds = 2868.988 FPS
+14483 frames in 5.0 seconds = 2896.600 FPS
+14486 frames in 5.0 seconds = 2897.139 FPS
+14795 frames in 5.0 seconds = 2958.907 FPS
+14591 frames in 5.0 seconds = 2918.070 FPS
+14890 frames in 5.0 seconds = 2977.897 FPS
+14473 frames in 5.0 seconds = 2894.450 FPS
+14506 frames in 5.0 seconds = 2901.137 FPS
+14756 frames in 5.0 seconds = 2951.182 FPS
+14485 frames in 5.0 seconds = 2896.832 FPS
+14616 frames in 5.0 seconds = 2923.157 FPS
+14411 frames in 5.0 seconds = 2882.040 FPS
+14627 frames in 5.0 seconds = 2925.247 FPS
+14349 frames in 5.0 seconds = 2869.786 FPS
+14481 frames in 5.0 seconds = 2896.066 FPS
+14638 frames in 5.0 seconds = 2927.474 FPS
+14268 frames in 5.0 seconds = 2853.416 FPS
+14386 frames in 5.0 seconds = 2877.199 FPS
+14518 frames in 5.0 seconds = 2903.500 FPS
+
+avg:
+
+14529.04		      2905.4766
+
+
+kernel.sched_autogroup_enabled = 0
+-----------------------------------
+14807 frames in 5.0 seconds = 2961.377 FPS
+14607 frames in 5.0 seconds = 2921.214 FPS
+14713 frames in 5.0 seconds = 2942.379 FPS
+14739 frames in 5.0 seconds = 2947.558 FPS
+14761 frames in 5.0 seconds = 2952.008 FPS
+14490 frames in 5.0 seconds = 2897.850 FPS
+14850 frames in 5.0 seconds = 2969.995 FPS
+14894 frames in 5.0 seconds = 2978.680 FPS
+14515 frames in 5.0 seconds = 2902.887 FPS
+14422 frames in 5.0 seconds = 2884.295 FPS
+14427 frames in 5.0 seconds = 2885.224 FPS
+14683 frames in 5.0 seconds = 2936.451 FPS
+14612 frames in 5.0 seconds = 2922.310 FPS
+14573 frames in 5.0 seconds = 2914.507 FPS
+14652 frames in 5.0 seconds = 2930.223 FPS
+14613 frames in 5.0 seconds = 2922.465 FPS
+14472 frames in 5.0 seconds = 2894.223 FPS
+14345 frames in 5.0 seconds = 2868.925 FPS
+14383 frames in 5.0 seconds = 2876.486 FPS
+14275 frames in 5.0 seconds = 2854.830 FPS
+14463 frames in 5.0 seconds = 2892.509 FPS
+14442 frames in 5.0 seconds = 2888.343 FPS
+14484 frames in 5.0 seconds = 2896.644 FPS
+14488 frames in 5.0 seconds = 2897.453 FPS
+14441 frames in 5.0 seconds = 2888.058 FPS
+14521 frames in 5.0 seconds = 2904.076 FPS
+14546 frames in 5.0 seconds = 2909.199 FPS
+14667 frames in 5.0 seconds = 2933.217 FPS
+14580 frames in 5.0 seconds = 2915.792 FPS
+14728 frames in 5.0 seconds = 2945.533 FPS
+14702 frames in 5.0 seconds = 2940.373 FPS
+14490 frames in 5.0 seconds = 2897.855 FPS
+14530 frames in 5.0 seconds = 2905.863 FPS
+14495 frames in 5.0 seconds = 2898.831 FPS
+14547 frames in 5.0 seconds = 2909.246 FPS
+14459 frames in 5.0 seconds = 2891.740 FPS
+14715 frames in 5.0 seconds = 2942.998 FPS
+14336 frames in 5.0 seconds = 2867.057 FPS
+14719 frames in 5.0 seconds = 2943.632 FPS
+14508 frames in 5.0 seconds = 2901.555 FPS
+14463 frames in 5.0 seconds = 2892.427 FPS
+14637 frames in 5.0 seconds = 2927.346 FPS
+14564 frames in 5.0 seconds = 2912.624 FPS
+14538 frames in 5.0 seconds = 2907.580 FPS
+14729 frames in 5.0 seconds = 2945.651 FPS
+14637 frames in 5.0 seconds = 2927.306 FPS
+14432 frames in 5.0 seconds = 2886.327 FPS
+13826 frames in 5.0 seconds = 2765.175 FPS
+14105 frames in 5.0 seconds = 2820.815 FPS
+14298 frames in 5.0 seconds = 2859.483 FPS
+
+avg:
+14538.46			2907.5719

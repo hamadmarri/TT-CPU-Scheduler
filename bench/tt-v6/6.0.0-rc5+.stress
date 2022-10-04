@@ -1,0 +1,75 @@
+
+6.0.0-rc5+
+---------
+
+kernel.sched_tt_balancer_opt = 1
+--------------------------------
+stress-ng: info:  [4973] setting to a 60 second run per stressor
+stress-ng: info:  [4973] dispatching hogs: 11 cpu
+stress-ng: info:  [4973] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [4973]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [4973] cpu              879435     60.00    649.00    649.00     14656.74      135506.16
+
+
+stress-ng: info:  [5106] setting to a 60 second run per stressor
+stress-ng: info:  [5106] dispatching hogs: 11 cpu
+stress-ng: info:  [5106] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5106]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5106] cpu              880050     60.01    649.00    649.00     14666.23      135600.92
+
+stress-ng: info:  [3132] setting to a 60 second run per stressor
+stress-ng: info:  [3132] dispatching hogs: 11 cpu
+stress-ng: info:  [3132] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [3132]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [3132] cpu              884086     60.01    649.00    649.00     14733.44      136222.80
+
+
+with sticky cpu bound:
+stress-ng: info:  [2781] setting to a 60 second run per stressor
+stress-ng: info:  [2781] dispatching hogs: 11 cpu
+stress-ng: info:  [2781] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [2781]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [2781] cpu              896805     60.01    649.00    649.00     14944.82      138182.59
+
+stress-ng: info:  [2995] setting to a 60 second run per stressor
+stress-ng: info:  [2995] dispatching hogs: 11 cpu
+stress-ng: info:  [2995] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [2995]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [2995] cpu              899291     60.00    649.00    649.00     14987.36      138565.64
+
+
+kernel.sched_tt_balancer_opt = 2
+--------------------------------
+stress-ng: info:  [5236] setting to a 60 second run per stressor
+stress-ng: info:  [5236] dispatching hogs: 11 cpu
+stress-ng: info:  [5236] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5236]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5236] cpu              881688     60.01    648.00    648.00     14693.24      136062.96
+
+stress-ng: info:  [5265] dispatching hogs: 11 cpu
+stress-ng: info:  [5265] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5265]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5265] cpu              879141     60.01    648.00    648.00     14650.72      135669.91
+
+
+kernel.sched_tt_balancer_opt = 0
+--------------------------------
+stress-ng: info:  [5719] setting to a 60 second run per stressor
+stress-ng: info:  [5719] dispatching hogs: 11 cpu
+stress-ng: info:  [5719] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5719]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5719] cpu              878367     60.00    648.00    648.00     14638.88      135550.46
+stress-ng: info:  [5719] successful run completed in 60.01s (1 min, 0.01 secs)
+
+stress-ng: info:  [5895] dispatching hogs: 11 cpu
+stress-ng: info:  [5895] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5895]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5895] cpu              877361     60.01    649.00    649.00     14620.55      135186.59
+stress-ng: info:  [5895] successful run completed in 60.02s (1 min, 0.02 secs)
+
+stress-ng: info:  [5927] dispatching hogs: 11 cpu
+stress-ng: info:  [5927] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5927]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5927] cpu              877048     60.00    648.00    648.00     14616.78      135346.91
+stress-ng: info:  [5927] successful run completed in 60.01s (1 min, 0.01 secs)
+

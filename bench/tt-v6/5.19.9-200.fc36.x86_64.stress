@@ -1,0 +1,19 @@
+5.19.9-200.fc36.x86_64
+-----------------------
+
+kernel.sched_autogroup_enabled = 1
+----------------------------------
+stress-ng: info:  [2976] setting to a 60 second run per stressor
+stress-ng: info:  [2976] dispatching hogs: 11 cpu
+stress-ng: info:  [2976] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [2976]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [2976] cpu              883485     60.00    625.00    625.00     14724.40      141357.60
+stress-ng: info:  [2976] successful run completed in 60.01s (1 min, 0.01 secs)
+
+
+stress-ng: info:  [3190] setting to a 60 second run per stressor
+stress-ng: info:  [3190] dispatching hogs: 11 cpu
+stress-ng: info:  [3190] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [3190]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [3190] cpu              303605     20.71    209.00    209.00     14657.55      145265.55
+stress-ng: info:  [3190] successful run completed in 20.72s
