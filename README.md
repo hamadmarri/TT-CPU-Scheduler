@@ -57,27 +57,35 @@ Default is -20. Range [-20, 19]. In case that tasks with types other than realti
 are starving because of realtime tasks' priorities are too high, you can soften
 the priority of realtime tasks. The -20 is the highest, 19 is the least priority.
 
+`kernel.sched_tt_interactive_prio`
+Default is -10. Range [-20, 19].
+
+`kernel.sched_tt_cpu_bound_prio`
+Default is -15. Range [-20, 19].
+
+`kernel.sched_tt_batch_prio`
+Default is 19. Range [-20, 19].
+
 
 `kernel.sched_tt_balancer_opt`
 
 It can be set to 4 values:
 
 - 0: Normal TT balancer
-- 1: Candidate Balancer (which is an addition to normal TT balancer)
-- 2: Global runqueue GRQ
-- 3: Power save balancer
+- 1: Candidate Balancer (which is an addition to normal TT balancer - good for reponsiveness (perfomance gets affected when #CPUs > 4))
+- 2: CFS balancer (default - good for perfomance/throughput)
+- 3: Power save balancer (tries its best to avoid running tasks on idle cpus - saves power)
 
 You can change the balancer option at run time.
 
-More info about load balancing [here](https://github.com/hamadmarri/TT-CPU-Scheduler/issues/12)
+`kernel.sched_tt_lat_sens_enabled`
+Default is 1. latency sensitive keeps CPUs (with no tasks) at high frequency for sometime (~1ms) in
+case of incoming task during this time would run faster. It reduces latency but increases power consumption.
+If Power save balancer is chosen, then this option has no effect (i.e. disabled, = 0).
 
-
-`kernel.sched_tt_grq_balance_ms`
-
-Default is 6ms. It is only used in GRQ. For ultimate responsive system set it to 0ms, but this will
-cause many locks to the global runqueue and thus reduce throughput. The 6ms is reasonable for both
-latency and throughput. It also depends on the number of CPUs.
-
+`kernel.sched_tt_dedicated_cpu_bound_enabled`
+Default is 1. This option stick a CPU bound task to its current CPU to enhance cache locality.
+A CPU can only have one dedicated cpu bound task.
 
 
 ## Support
